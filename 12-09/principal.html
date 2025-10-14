@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head> <link rel="icon" href="imagens/elden.webp" type="image/webp">
+<link rel="stylesheet"  href="styles.css/styletext.css">
+
+<style>
+	 .menu-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap; 
+}
+
+.menu {
+  width: 200px;
+}
+
+.menu-item {
+  cursor: pointer;
+  background-color: #f0f0f0;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  color: black;
+  text-align: center;
+}
+
+.submenu {
+  display: none;
+  margin-top: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.submenu a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+.submenu a:hover {
+  background-color: #ddd;
+
+
+  }
+
+body {
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  color: white;
+  </style>
+	
+
+
+
+
+
+
+	<title>Elden ring - GUIA</title>
+
+</head>
+<body bgcolor="black">
+	
+<font color="white">	<center><h1> ELDEN RING - GUIA DEFINITIVO </h1></center> 
+<br>
+<br>
+
+<nav>
+  <div class="menu-container">
+
+    <!-- Menu: Armas Lendárias -->
+    <div class="menu"> 
+      <div class="menu-item" onclick="toggleSubmenu('submenu-armas')">Armas Lendárias</div>
+      <div class="submenu" id="submenu-armas">
+        <a href="moonblade.html">Moonlight Greatsword</a>
+        <a href="noite-chama.html">Espada da Noite e da Chama</a>
+        <a href="enxertada.html">Espada Grande com Lâmina Enxertada</a>
+      </div>
+    </div>
+
+    <!-- Menu: Classes -->
+    <div class="menu"> 
+      <div class="menu-item" onclick="toggleSubmenu('submenu-classes')">Classes</div>
+      <div class="submenu" id="submenu-classes">
+        <a href="guerreiro.html">Guerreiro</a>
+        <a href="astrologo.html">Astrólogo</a>
+        <a href="samurai.html">Samurai</a>
+      </div>
+    </div>
+
+    <!-- Menu: Bosses -->
+    <div class="menu"> 
+      <div class="menu-item" onclick="toggleSubmenu('submenu-bosses')">Bosses</div>
+      <div class="submenu" id="submenu-bosses">
+        <a href="#">Maliketh</a>
+        <a href="#">Radahn</a>
+        <a href="#">Margit</a>
+      </div>
+    </div>
+
+    <!-- Menu: Locais Importantes -->
+    <div class="menu"> 
+      <div class="menu-item" onclick="toggleSubmenu('submenu-locais')">Locais Importantes</div>
+      <div class="submenu" id="submenu-locais">
+        <a href="#">Caelid</a>
+        <a href="#">Nokron</a>
+        <a href="#">Liurnia</a>
+      </div>
+    </div>
+
+  </div>
+
+  
+  <script>
+    function toggleSubmenu(id) {
+      // Fecha todos os submenus abertos
+      const submenus = document.querySelectorAll('.submenu');
+      submenus.forEach(sub => {
+        if (sub.id !== id) {
+          sub.style.display = 'none';
+        }
+      });
+
+    
+      const submenu = document.getElementById(id);
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+   </nav>
+
+
+
+</font>
+</body>
+</html>

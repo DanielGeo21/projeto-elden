@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elden Ring - Guia Definitivo</title>
+
+<!-- Favicon -->
+<link rel="icon" href="imagens/elden.webp" type="image/webp" />
+
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    background-color: #121212;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  a {
+    color: #D4AF37; /* dourado */
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  header {
+    background-color: #1f1f1f;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 2px solid #333;
+  }
+
+  header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    color: #D4AF37; /* dourado */
+  }
+
+  nav {
+    background-color: #222;
+    padding: 0.5rem 0;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    cursor: pointer;
+    position: relative;
+  }
+
+  nav ul li .menu-item {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    transition: background-color 0.3s;
+  }
+
+  nav ul li .menu-item:hover {
+    background-color: #D4AF37; /* dourado */
+    color: #121212;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    margin-top: 0.3rem;
+    border-radius: 4px;
+    min-width: 200px;
+    z-index: 100;
+  }
+
+  nav ul li:hover .submenu {
+    display: block;
+  }
+
+  .submenu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #eee;
+    border-bottom: 1px solid #444;
+  }
+
+  .submenu a:last-child {
+    border-bottom: none;
+  }
+
+  .submenu a:hover {
+    background-color: #D4AF37; /* dourado */
+    color: #121212;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 2rem auto 4rem auto;
+    padding: 0 1rem;
+  }
+
+  .samurai-section {
+    text-align: center;
+  }
+
+  .samurai-section img {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #D4AF37aa; /* sombra dourada */
+  }
+
+  #player {
+    margin: 2rem auto;
+    width: 500px;
+    max-width: 100%;
+    height: 281px; /* 16:9 proporção */
+    border-radius: 8px;
+    box-shadow: 0 0 15px #D4AF37aa; /* sombra dourada */
+    overflow: hidden;
+    background-color: black;
+  }
+
+  .samurai-text {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer {
+    background-color: #1f1f1f;
+    text-align: center;
+    padding: 1rem 0;
+    color: #777;
+    border-top: 1px solid #333;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+    nav ul li {
+      margin-bottom: 0.3rem;
+    }
+    #player {
+      width: 100%;
+      height: calc(100vw * 9 / 16);
+    }
+    .samurai-section img {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ELDEN RING - GUIA DEFINITIVO</h1>
+</header>
+
+<nav>
+  <ul>
+    <li>
+      <div class="menu-item">Armas Lendárias</div>
+      <div class="submenu">
+        <a href="moonblade.html">Moonlight Greatsword</a>
+        <a href="noite-chama.html">Espada da Noite e da Chama</a>
+        <a href="enxertada.html">Espada Grande com Lâmina Enxertada</a>
+      </div>
+    </li>
+
+    <li>
+      <div class="menu-item">Classes</div>
+      <div class="submenu">
+        <a href="samurai.html">Samurai</a>
+        <a href="astrologo.html">Astrólogo</a>
+        <a href="ladrao.html">Ladrão</a>
+      </div>
+    </li>
+
+    <li>
+      <div class="menu-item">Bosses</div>
+      <div class="submenu">
+        <a href="margit.html">Margit</a>
+        <a href="radagon.html">Radagon</a>
+        <a href="malenia.html">Malenia</a>
+      </div>
+    </li>
+
+    <li>
+      <div class="menu-item">Táticas</div>
+      <div class="submenu">
+        <a href="pvp.html">PvP</a>
+        <a href="pve.html">PvE</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<main>
+  <section class="samurai-section">
+    <h2>Classe: Samurai</h2>
+    <img src="imagens/samurai.webp" alt="Imagem da Classe Samurai" />
+
+    <div id="player"></div>
+
+    <article class="samurai-text">
+      <p>
+        O Samurai é uma classe versátil e resistente, especialista em combates com katana e técnicas de longo alcance. Esta classe tem um equilíbrio entre força, destreza e resistência, tornando-a ideal para jogadores que gostam de estilos táticos e rápidos.
+      </p>
+      <p>
+        Equipado com o arco e a espada tradicional japonesa, o Samurai pode alternar entre ataques corpo a corpo e ataques à distância, aproveitando o melhor dos dois mundos. Seus atributos iniciais favorecem destreza e resistência, o que permite uma boa mobilidade e defesa.
+      </p>
+      <p>
+        Esta classe é perfeita para quem quer explorar diferentes estilos de combate e enfrentar chefes de Elden Ring com habilidade e estratégia.
+      </p>
+    </article>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Elden Ring Fan Page - Todos os direitos reservados
+</footer>
+
+<script>
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '281',
+      width: '500',
+      videoId: 'WDTGhmunOVw',
+      playerVars: {
+        autoplay: 1,
+        controls: 0,
+        mute: 1,
+        modestbranding: 1,
+        rel: 0,
+        start: 13,
+      },
+      events: {
+        onReady: onPlayerReady,
+        onStateChange: onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+      checkTime();
+    }
+  }
+
+  function checkTime() {
+    if (player) {
+      var currentTime = player.getCurrentTime();
+      if (currentTime >= 20) {
+        player.seekTo(13);
+      }
+      setTimeout(checkTime, 500);
+    }
+  }
+</script>
+
+</body>
+</html>
