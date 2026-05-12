@@ -1,294 +1,556 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Elden Ring - Guia Definitivo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Favicon -->
-<link rel="icon" href="imagens/elden.webp" type="image/webp" />
+    <title>Samurai — Elden Ring Wiki</title>
 
-<style>
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    background-color: #121212;
-    color: #eee;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+    <link rel="icon" href="imagens/elden.webp" type="image/webp">
 
-  a {
-    color: #D4AF37; /* dourado */
-    text-decoration: none;
-  }
+    <!-- FONTES -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  a:hover {
-    text-decoration: underline;
-  }
+    <style>
 
-  header {
-    background-color: #1f1f1f;
-    padding: 1rem 0;
-    text-align: center;
-    border-bottom: 2px solid #333;
-  }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
-  header h1 {
-    margin: 0;
-    font-weight: 700;
-    font-size: 2.5rem;
-    letter-spacing: 1px;
-    color: #D4AF37; /* dourado */
-  }
+        body{
+            font-family:'Inter',sans-serif;
 
-  nav {
-    background-color: #222;
-    padding: 0.5rem 0;
-  }
+            background:
+                linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.95)),
+                url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop');
 
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-  }
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
 
-  nav ul li {
-    cursor: pointer;
-    position: relative;
-  }
+            color:white;
+            overflow-x:hidden;
+        }
 
-  nav ul li .menu-item {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    background-color: #2a2a2a;
-    transition: background-color 0.3s;
-  }
+        /* NAVBAR */
 
-  nav ul li .menu-item:hover {
-    background-color: #D4AF37; /* dourado */
-    color: #121212;
-  }
+        header{
+            position:fixed;
+            top:0;
+            width:100%;
+            z-index:999;
 
-  .submenu {
-    display: none;
-    position: absolute;
-    background-color: #2a2a2a;
-    border: 1px solid #444;
-    margin-top: 0.3rem;
-    border-radius: 4px;
-    min-width: 200px;
-    z-index: 100;
-  }
+            backdrop-filter:blur(12px);
 
-  nav ul li:hover .submenu {
-    display: block;
-  }
+            background:rgba(0,0,0,0.45);
 
-  .submenu a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: #eee;
-    border-bottom: 1px solid #444;
-  }
+            border-bottom:1px solid rgba(255,255,255,0.08);
+        }
 
-  .submenu a:last-child {
-    border-bottom: none;
-  }
+        .navbar{
+            max-width:1400px;
+            margin:auto;
 
-  .submenu a:hover {
-    background-color: #D4AF37; /* dourado */
-    color: #121212;
-  }
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
 
-  main {
-    max-width: 900px;
-    margin: 2rem auto 4rem auto;
-    padding: 0 1rem;
-  }
+            padding:1rem 2rem;
+        }
 
-  .samurai-section {
-    text-align: center;
-  }
+        .logo{
+            font-family:'Cinzel',serif;
+            font-size:1.8rem;
+            font-weight:700;
+            letter-spacing:3px;
 
-  .samurai-section img {
-    width: 500px;
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 15px #D4AF37aa; /* sombra dourada */
-  }
+            color:#d4af37;
 
-  #player {
-    margin: 2rem auto;
-    width: 500px;
-    max-width: 100%;
-    height: 281px; /* 16:9 proporção */
-    border-radius: 8px;
-    box-shadow: 0 0 15px #D4AF37aa; /* sombra dourada */
-    overflow: hidden;
-    background-color: black;
-  }
+            text-shadow:
+                0 0 10px rgba(212,175,55,0.4);
+        }
 
-  .samurai-text {
-    margin-top: 1.5rem;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #ccc;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+        nav ul{
+            display:flex;
+            gap:1rem;
+            list-style:none;
+        }
 
-  footer {
-    background-color: #1f1f1f;
-    text-align: center;
-    padding: 1rem 0;
-    color: #777;
-    border-top: 1px solid #333;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    font-size: 0.9rem;
-  }
+        nav ul li{
+            position:relative;
+        }
 
-  @media (max-width: 600px) {
-    nav ul {
-      flex-direction: column;
-      gap: 0;
-    }
-    nav ul li {
-      margin-bottom: 0.3rem;
-    }
-    #player {
-      width: 100%;
-      height: calc(100vw * 9 / 16);
-    }
-    .samurai-section img {
-      width: 100%;
-    }
-  }
-</style>
+        .menu-item{
+            padding:0.8rem 1rem;
+
+            border-radius:10px;
+
+            cursor:pointer;
+
+            transition:0.3s ease;
+
+            color:#eee;
+        }
+
+        .menu-item:hover{
+            background:rgba(212,175,55,0.15);
+            color:#d4af37;
+        }
+
+        .submenu{
+            display:none;
+
+            position:absolute;
+            top:120%;
+            left:0;
+
+            min-width:220px;
+
+            background:rgba(15,15,15,0.95);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            border-radius:14px;
+
+            overflow:hidden;
+
+            backdrop-filter:blur(10px);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        nav ul li:hover .submenu{
+            display:block;
+        }
+
+        .submenu a{
+            display:block;
+
+            padding:1rem;
+
+            text-decoration:none;
+
+            color:#d7d7d7;
+
+            transition:0.3s ease;
+        }
+
+        .submenu a:hover{
+            background:rgba(212,175,55,0.12);
+            color:#d4af37;
+
+            padding-left:1.4rem;
+        }
+
+        /* HERO */
+
+        .hero{
+            min-height:100vh;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            padding:8rem 2rem 4rem;
+        }
+
+        .hero-content{
+            max-width:1300px;
+
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:4rem;
+
+            align-items:center;
+        }
+
+        .hero-image img{
+            width:100%;
+
+            border-radius:24px;
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.7),
+                0 0 30px rgba(212,175,55,0.15);
+
+            animation:fadeUp 1.2s ease;
+        }
+
+        .hero-text{
+            animation:fadeUp 1.5s ease;
+        }
+
+        .tag{
+            display:inline-block;
+
+            padding:0.5rem 1rem;
+
+            background:rgba(212,175,55,0.12);
+
+            border:1px solid rgba(212,175,55,0.3);
+
+            border-radius:999px;
+
+            color:#d4af37;
+
+            margin-bottom:1.5rem;
+        }
+
+        .hero-text h1{
+            font-family:'Cinzel',serif;
+
+            font-size:clamp(3rem,6vw,5rem);
+
+            line-height:1.1;
+
+            margin-bottom:1.5rem;
+
+            color:#f5f5f5;
+        }
+
+        .hero-text p{
+            color:#c8c8c8;
+
+            line-height:1.8;
+
+            font-size:1.1rem;
+
+            margin-bottom:1.5rem;
+        }
+
+        /* STATS */
+
+        .stats{
+            display:flex;
+            gap:1rem;
+            flex-wrap:wrap;
+
+            margin-top:2rem;
+        }
+
+        .stat-card{
+            background:rgba(255,255,255,0.05);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            border-radius:18px;
+
+            padding:1rem 1.4rem;
+
+            min-width:130px;
+
+            backdrop-filter:blur(10px);
+        }
+
+        .stat-card h3{
+            color:#d4af37;
+            margin-bottom:0.4rem;
+            font-size:0.95rem;
+        }
+
+        .stat-card span{
+            font-size:1.2rem;
+            font-weight:600;
+        }
+
+        /* VIDEO */
+
+        .video-section{
+            max-width:1200px;
+            margin:auto;
+
+            padding:2rem;
+        }
+
+        .video-container{
+            overflow:hidden;
+
+            border-radius:24px;
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.6),
+                0 0 20px rgba(212,175,55,0.1);
+        }
+
+        #player{
+            width:100%;
+            height:700px;
+        }
+
+        /* FOOTER */
+
+        footer{
+            text-align:center;
+
+            padding:3rem 1rem;
+
+            color:#888;
+        }
+
+        /* ANIMAÇÃO */
+
+        @keyframes fadeUp{
+
+            from{
+                opacity:0;
+                transform:translateY(30px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* RESPONSIVO */
+
+        @media(max-width:1000px){
+
+            .hero-content{
+                grid-template-columns:1fr;
+            }
+
+            #player{
+                height:400px;
+            }
+        }
+
+        @media(max-width:768px){
+
+            nav ul{
+                gap:0.2rem;
+            }
+
+            .menu-item{
+                font-size:0.9rem;
+                padding:0.6rem;
+            }
+
+            .logo{
+                font-size:1.2rem;
+            }
+
+            #player{
+                height:250px;
+            }
+
+            .hero{
+                padding-top:10rem;
+            }
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-<header>
-  <h1>ELDEN RING - GUIA DEFINITIVO</h1>
-</header>
+    <!-- NAVBAR -->
 
-<nav>
-  <ul>
-    <li>
-      <div class="menu-item">Armas Lendárias</div>
-      <div class="submenu">
-        <a href="moonblade.html">Moonlight Greatsword</a>
-        <a href="noite-chama.html">Espada da Noite e da Chama</a>
-        <a href="enxertada.html">Espada Grande com Lâmina Enxertada</a>
-      </div>
-    </li>
+    <header>
 
-    <li>
-      <div class="menu-item">Classes</div>
-      <div class="submenu">
-        <a href="samurai.html">Samurai</a>
-        <a href="astrologo.html">Astrólogo</a>
-        <a href="ladrao.html">Ladrão</a>
-      </div>
-    </li>
+        <div class="navbar">
 
-    <li>
-      <div class="menu-item">Bosses</div>
-      <div class="submenu">
-        <a href="margit.html">Margit</a>
-        <a href="radagon.html">Radagon</a>
-        <a href="malenia.html">Malenia</a>
-      </div>
-    </li>
+            <div class="logo">
+                ELDEN RING
+            </div>
 
-    <li>
-      <div class="menu-item">Táticas</div>
-      <div class="submenu">
-        <a href="pvp.html">PvP</a>
-        <a href="pve.html">PvE</a>
-      </div>
-    </li>
-  </ul>
-</nav>
+            <nav>
 
-<main>
-  <section class="samurai-section">
-    <h2>Classe: Samurai</h2>
-    <img src="imagens/samurai.webp" alt="Imagem da Classe Samurai" />
+                <ul>
 
-    <div id="player"></div>
+                    <li>
 
-    <article class="samurai-text">
-      <p>
-        O Samurai é uma classe versátil e resistente, especialista em combates com katana e técnicas de longo alcance. Esta classe tem um equilíbrio entre força, destreza e resistência, tornando-a ideal para jogadores que gostam de estilos táticos e rápidos.
-      </p>
-      <p>
-        Equipado com o arco e a espada tradicional japonesa, o Samurai pode alternar entre ataques corpo a corpo e ataques à distância, aproveitando o melhor dos dois mundos. Seus atributos iniciais favorecem destreza e resistência, o que permite uma boa mobilidade e defesa.
-      </p>
-      <p>
-        Esta classe é perfeita para quem quer explorar diferentes estilos de combate e enfrentar chefes de Elden Ring com habilidade e estratégia.
-      </p>
-    </article>
-  </section>
-</main>
+                        <div class="menu-item">Armas</div>
 
-<footer>
-  &copy; 2025 Elden Ring Fan Page - Todos os direitos reservados
-</footer>
+                        <div class="submenu">
+                            <a href="moonblade.html">Moonlight Greatsword</a>
+                            <a href="noite-chama.html">Espada da Noite e da Chama</a>
+                            <a href="enxertada.html">Lâmina Enxertada</a>
+                        </div>
 
-<script>
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                    </li>
 
-  var player;
+                    <li>
 
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '281',
-      width: '500',
-      videoId: 'WDTGhmunOVw',
-      playerVars: {
-        autoplay: 1,
-        controls: 0,
-        mute: 1,
-        modestbranding: 1,
-        rel: 0,
-        start: 13,
-      },
-      events: {
-        onReady: onPlayerReady,
-        onStateChange: onPlayerStateChange
-      }
-    });
-  }
+                        <div class="menu-item">Classes</div>
 
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
+                        <div class="submenu">
+                            <a href="samurai.html">Samurai</a>
+                            <a href="astrologo.html">Astrólogo</a>
+                            <a href="ladrao.html">Ladrão</a>
+                        </div>
 
-  function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING) {
-      checkTime();
-    }
-  }
+                    </li>
 
-  function checkTime() {
-    if (player) {
-      var currentTime = player.getCurrentTime();
-      if (currentTime >= 20) {
-        player.seekTo(13);
-      }
-      setTimeout(checkTime, 500);
-    }
-  }
-</script>
+                    <li>
+
+                        <div class="menu-item">Bosses</div>
+
+                        <div class="submenu">
+                            <a href="margit.html">Margit</a>
+                            <a href="radagon.html">Radagon</a>
+                            <a href="malenia.html">Malenia</a>
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-image">
+
+                <img src="imagens/samurai.webp" alt="Classe Samurai">
+
+            </div>
+
+            <div class="hero-text">
+
+                <div class="tag">
+                    Classe Inicial
+                </div>
+
+                <h1>SAMURAI</h1>
+
+                <p>
+                    O Samurai é uma das classes mais versáteis de Elden Ring,
+                    combinando velocidade, precisão e resistência em combate.
+                </p>
+
+                <p>
+                    Equipado com uma katana mortal e um arco confiável,
+                    ele domina tanto confrontos corpo a corpo quanto ataques à distância,
+                    oferecendo um estilo elegante e extremamente letal.
+                </p>
+
+                <p>
+                    Sua alta destreza e mobilidade fazem do Samurai uma escolha perfeita
+                    para jogadores agressivos, técnicos e estratégicos.
+                </p>
+
+                <div class="stats">
+
+                    <div class="stat-card">
+                        <h3>Destreza</h3>
+                        <span>Alta</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Mobilidade</h3>
+                        <span>Excelente</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Dificuldade</h3>
+                        <span>Média</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- VIDEO -->
+
+    <section class="video-section">
+
+        <div class="video-container">
+            <div id="player"></div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2025 Elden Ring Wiki — Projeto feito por fã
+    </footer>
+
+    <!-- YOUTUBE -->
+
+    <script>
+
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+
+            player = new YT.Player('player', {
+
+                videoId: 'WDTGhmunOVw',
+
+                playerVars: {
+                    autoplay: 1,
+                    controls: 0,
+                    mute: 1,
+                    modestbranding: 1,
+                    rel: 0,
+                    start: 13
+                },
+
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+
+            if (event.data == YT.PlayerState.PLAYING) {
+                checkTime();
+            }
+        }
+
+        function checkTime() {
+
+            if (player) {
+
+                var currentTime = player.getCurrentTime();
+
+                if (currentTime >= 20) {
+                    player.seekTo(13);
+                }
+
+                setTimeout(checkTime, 500);
+            }
+        }
+
+    </script>
 
 </body>
+
 </html>
