@@ -26,7 +26,7 @@
 
             background:
                 linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.96)),
-                url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1920&auto=format&fit=crop');
+                url('imagens/fundo-astrologo.jpg');
 
             background-size:cover;
             background-position:center;
@@ -78,8 +78,7 @@
 
             color:#8cb8ff;
 
-            text-shadow:
-                0 0 15px rgba(140,184,255,0.5);
+            text-shadow:0 0 15px rgba(140,184,255,0.5);
         }
 
         nav ul{
@@ -105,15 +104,16 @@
             transition:0.3s ease;
 
             color:#eee;
+
+            user-select:none;
         }
 
         .menu-item:hover{
-
             background:rgba(140,184,255,0.12);
-
             color:#8cb8ff;
         }
 
+        /* 🔥 CONTROLADO POR JS (REMOVIDO HOVER) */
         .submenu{
 
             display:none;
@@ -135,11 +135,10 @@
 
             backdrop-filter:blur(10px);
 
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.5);
+            box-shadow:0 10px 30px rgba(0,0,0,0.5);
         }
 
-        nav ul li:hover .submenu{
+        nav ul li.active .submenu{
             display:block;
         }
 
@@ -198,15 +197,12 @@
 
             border:1px solid rgba(255,255,255,0.08);
 
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.7),
-                0 0 30px rgba(140,184,255,0.15);
+            box-shadow:0 20px 60px rgba(0,0,0,0.7),0 0 30px rgba(140,184,255,0.15);
 
             animation:fadeUp 1.2s ease;
         }
 
         .hero-text{
-
             animation:fadeUp 1.5s ease;
         }
 
@@ -251,8 +247,6 @@
             margin-bottom:1.5rem;
         }
 
-        /* STATS */
-
         .stats{
 
             display:flex;
@@ -278,112 +272,56 @@
         }
 
         .stat-card h3{
-
             color:#8cb8ff;
-
             margin-bottom:0.4rem;
-
             font-size:0.95rem;
         }
 
         .stat-card span{
-
             font-size:1.2rem;
-
             font-weight:600;
         }
 
-        /* VIDEO */
-
         .video-section{
-
             max-width:1200px;
-
             margin:auto;
-
             padding:2rem;
         }
 
         .video-container{
-
             overflow:hidden;
-
             border-radius:24px;
-
             border:1px solid rgba(255,255,255,0.08);
-
-            box-shadow:
-                0 20px 50px rgba(0,0,0,0.6),
-                0 0 20px rgba(140,184,255,0.12);
+            box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 20px rgba(140,184,255,0.12);
         }
 
         #player{
-
             width:100%;
             height:700px;
         }
 
-        /* FOOTER */
-
         footer{
-
             text-align:center;
-
             padding:3rem 1rem;
-
             color:#888;
         }
 
-        /* ANIMAÇÃO */
-
         @keyframes fadeUp{
-
-            from{
-                opacity:0;
-                transform:translateY(30px);
-            }
-
-            to{
-                opacity:1;
-                transform:translateY(0);
-            }
+            from{opacity:0;transform:translateY(30px);}
+            to{opacity:1;transform:translateY(0);}
         }
 
-        /* RESPONSIVO */
-
         @media(max-width:1000px){
-
-            .hero-content{
-                grid-template-columns:1fr;
-            }
-
-            #player{
-                height:400px;
-            }
+            .hero-content{grid-template-columns:1fr;}
+            #player{height:400px;}
         }
 
         @media(max-width:768px){
-
-            nav ul{
-                gap:0.2rem;
-            }
-
-            .menu-item{
-                font-size:0.9rem;
-                padding:0.6rem;
-            }
-
-            .logo{
-                font-size:1.2rem;
-            }
-
-            #player{
-                height:250px;
-            }
-
-            .hero{
-                padding-top:10rem;
-            }
+            nav ul{gap:0.2rem;}
+            .menu-item{font-size:0.9rem;padding:0.6rem;}
+            .logo{font-size:1.2rem;}
+            #player{height:250px;}
+            .hero{padding-top:10rem;}
         }
 
     </style>
@@ -392,204 +330,191 @@
 
 <body>
 
-    <!-- NAVBAR -->
+<header>
 
-    <header>
+    <div class="navbar">
 
-        <div class="navbar">
+        <div class="logo">ELDEN RING</div>
 
-            <div class="logo">
-                ELDEN RING
-            </div>
+        <nav>
 
-            <nav>
+            <ul>
 
-                <ul>
+                <li>
+                    <div class="menu-item">Armas</div>
+                    <div class="submenu">
+                        <a href="moonblade.html">Moonlight Greatsword</a>
+                        <a href="noite-chama.html">Espada da Noite e da Chama</a>
+                        <a href="enxertada.html">Lâmina Enxertada</a>
+                    </div>
+                </li>
 
-                    <li>
+                <li>
+                    <div class="menu-item">Classes</div>
+                    <div class="submenu">
+                        <a href="samurai.html">Samurai</a>
+                        <a href="astrologo.html">Astrólogo</a>
+                        <a href="ladrao.html">Ladrão</a>
+                    </div>
+                </li>
 
-                        <div class="menu-item">Armas</div>
+                <li>
+                    <div class="menu-item">Bosses</div>
+                    <div class="submenu">
+                        <a href="margit.html">Margit</a>
+                        <a href="radagon.html">Radagon</a>
+                        <a href="malenia.html">Malenia</a>
+                    </div>
+                </li>
 
-                        <div class="submenu">
-                            <a href="moonblade.html">Moonlight Greatsword</a>
-                            <a href="noite-chama.html">Espada da Noite e da Chama</a>
-                            <a href="enxertada.html">Lâmina Enxertada</a>
-                        </div>
+            </ul>
 
-                    </li>
+        </nav>
 
-                    <li>
+    </div>
 
-                        <div class="menu-item">Classes</div>
+</header>
 
-                        <div class="submenu">
-                            <a href="samurai.html">Samurai</a>
-                            <a href="astrologo.html">Astrólogo</a>
-                            <a href="ladrao.html">Ladrão</a>
-                        </div>
+<!-- HERO -->
+<section class="hero">
 
-                    </li>
+    <div class="hero-content">
 
-                    <li>
-
-                        <div class="menu-item">Bosses</div>
-
-                        <div class="submenu">
-                            <a href="margit.html">Margit</a>
-                            <a href="radagon.html">Radagon</a>
-                            <a href="malenia.html">Malenia</a>
-                        </div>
-
-                    </li>
-
-                </ul>
-
-            </nav>
-
+        <div class="hero-image">
+            <img src="imagens/astrologo.webp" alt="Classe Astrólogo">
         </div>
 
-    </header>
+        <div class="hero-text">
 
-    <!-- HERO -->
+            <div class="tag">Classe Mágica</div>
 
-    <section class="hero">
+            <h1>ASTRÓLOGO</h1>
 
-        <div class="hero-content">
+            <p> O Astrólogo é a classe perfeita para jogadores que desejam dominar as artes arcanas desde o início da jornada.
+                 </p>
+             <p> Especializado em feitiços devastadores de longo alcance, ele utiliza inteligência elevada para lançar magias poderosas capazes de eliminar inimigos antes mesmo do combate direto começar.
+                 </p>
+              <p> Apesar da baixa resistência física, o Astrólogo compensa com enorme poder destrutivo, controle de área e combate estratégico à distância. </p>
 
-            <div class="hero-image">
-
-                <img src="imagens/astrologo.webp" alt="Classe Astrólogo">
-
-            </div>
-
-            <div class="hero-text">
-
-                <div class="tag">
-                    Classe Mágica
-                </div>
-
-                <h1>ASTRÓLOGO</h1>
-
-                <p>
-                    O Astrólogo é a classe perfeita para jogadores
-                    que desejam dominar as artes arcanas desde o início da jornada.
-                </p>
-
-                <p>
-                    Especializado em feitiços devastadores de longo alcance,
-                    ele utiliza inteligência elevada para lançar magias poderosas
-                    capazes de eliminar inimigos antes mesmo do combate direto começar.
-                </p>
-
-                <p>
-                    Apesar da baixa resistência física,
-                    o Astrólogo compensa com enorme poder destrutivo,
-                    controle de área e combate estratégico à distância.
-                </p>
-
-                <div class="stats">
-
-                    <div class="stat-card">
-                        <h3>Magia</h3>
-                        <span>Extrema</span>
-                    </div>
-
-                    <div class="stat-card">
-                        <h3>Defesa</h3>
-                        <span>Baixa</span>
-                    </div>
-
-                    <div class="stat-card">
-                        <h3>Dificuldade</h3>
-                        <span>Média</span>
-                    </div>
-
-                </div>
-
+            <div class="stats">
+                <div class="stat-card"><h3>Magia</h3><span>Extrema</span></div>
+                <div class="stat-card"><h3>Defesa</h3><span>Baixa</span></div>
+                <div class="stat-card"><h3>Dificuldade</h3><span>Média</span></div>
             </div>
 
         </div>
 
-    </section>
+    </div>
 
-    <!-- VIDEO -->
+</section>
 
-    <section class="video-section">
+<!-- VIDEO -->
+<section class="video-section">
+    <div class="video-container">
+        <div id="player"></div>
+    </div>
+</section>
 
-        <div class="video-container">
-            <div id="player"></div>
-        </div>
+<footer>© 2025 Elden Ring Wiki — Projeto feito por fã</footer>
 
-    </section>
+<script src="https://www.youtube.com/iframe_api"></script>
 
-    <!-- FOOTER -->
+<script>
+var player;
 
-    <footer>
-        © 2025 Elden Ring Wiki — Projeto feito por fã
-    </footer>
-
-    <!-- YOUTUBE -->
-
-    <script>
-
-        var tag = document.createElement('script');
-
-        tag.src = "https://www.youtube.com/iframe_api";
-
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-
-        function onYouTubeIframeAPIReady() {
-
-            player = new YT.Player('player', {
-
-                videoId: 'BxOaEKMfO-8',
-
-                playerVars: {
-                    autoplay: 1,
-                    controls: 0,
-                    mute: 1,
-                    modestbranding: 1,
-                    rel: 0,
-                    start: 16
-                },
-
-                events: {
-                    onReady: onPlayerReady,
-                    onStateChange: onPlayerStateChange
-                }
-            });
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        videoId: 'BxOaEKMfO-8',
+        playerVars: {
+            autoplay: 1,
+            controls: 0,
+            mute: 1,
+            modestbranding: 1,
+            rel: 0,
+            start: 16
+        },
+        events: {
+            onReady: e => e.target.playVideo()
         }
+    });
+}
 
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
+/* MENU CLIQUE */
+const items = document.querySelectorAll("nav ul li");
 
-        function onPlayerStateChange(event) {
+items.forEach(item => {
+    item.querySelector(".menu-item").addEventListener("click", (e) => {
+        e.stopPropagation();
 
-            if (event.data == YT.PlayerState.PLAYING) {
-                checkTime();
-            }
-        }
+        items.forEach(i => {
+            if (i !== item) i.classList.remove("active");
+        });
 
-        function checkTime() {
+        item.classList.toggle("active");
+    });
+});
 
-            if (player) {
+document.addEventListener("click", () => {
+    items.forEach(i => i.classList.remove("active"));
+});
+</script>
+<style>
+#ash-container{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:2;
+}
 
-                var currentTime = player.getCurrentTime();
+.ash{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:rgba(200,200,200,0.35);
+    border-radius:50%;
+    filter:blur(0.2px);
+    animation:ashFloat linear infinite;
+}
 
-                if (currentTime >= 40) {
-                    player.seekTo(16);
-                }
+@keyframes ashFloat{
+    0%{
+        transform:translateY(-10vh) translateX(0);
+        opacity:0;
+    }
+    10%{opacity:0.6;}
+    100%{
+        transform:translateY(110vh) translateX(20px);
+        opacity:0;
+    }
+}
+</style>
 
-                setTimeout(checkTime, 500);
-            }
-        }
+<div id="ash-container"></div>
 
-    </script>
+<script>
+const ashContainer = document.getElementById('ash-container');
+
+function createAsh(){
+    const ash = document.createElement('div');
+    ash.classList.add('ash');
+
+    const size = Math.random() * 2 + 1;
+    ash.style.width = size + 'px';
+    ash.style.height = size + 'px';
+
+    ash.style.left = Math.random() * 100 + 'vw';
+    ash.style.top = -10 + 'vh';
+
+    ash.style.animationDuration = (8 + Math.random() * 12) + 's';
+
+    ashContainer.appendChild(ash);
+
+    setTimeout(() => ash.remove(), 20000);
+}
+
+setInterval(createAsh, 120);
+</script>
 
 </body>
 

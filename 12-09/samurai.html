@@ -25,7 +25,7 @@
 
             background:
                 linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.95)),
-                url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop');
+                url('imagens/fundo-samurai.webp');
 
             background-size:cover;
             background-position:center;
@@ -69,8 +69,7 @@
 
             color:#d4af37;
 
-            text-shadow:
-                0 0 10px rgba(212,175,55,0.4);
+            text-shadow:0 0 10px rgba(212,175,55,0.4);
         }
 
         nav ul{
@@ -85,14 +84,11 @@
 
         .menu-item{
             padding:0.8rem 1rem;
-
             border-radius:10px;
-
             cursor:pointer;
-
             transition:0.3s ease;
-
             color:#eee;
+            user-select:none;
         }
 
         .menu-item:hover{
@@ -100,6 +96,7 @@
             color:#d4af37;
         }
 
+        /* SUBMENU CONTROLADO POR JS */
         .submenu{
             display:none;
 
@@ -119,11 +116,10 @@
 
             backdrop-filter:blur(10px);
 
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.5);
+            box-shadow:0 10px 30px rgba(0,0,0,0.5);
         }
 
-        nav ul li:hover .submenu{
+        nav ul li.active .submenu{
             display:block;
         }
 
@@ -142,7 +138,6 @@
         .submenu a:hover{
             background:rgba(212,175,55,0.12);
             color:#d4af37;
-
             padding-left:1.4rem;
         }
 
@@ -150,35 +145,25 @@
 
         .hero{
             min-height:100vh;
-
             display:flex;
             align-items:center;
             justify-content:center;
-
             padding:8rem 2rem 4rem;
         }
 
         .hero-content{
             max-width:1300px;
-
             display:grid;
             grid-template-columns:1fr 1fr;
             gap:4rem;
-
             align-items:center;
         }
 
         .hero-image img{
             width:100%;
-
             border-radius:24px;
-
             border:1px solid rgba(255,255,255,0.08);
-
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.7),
-                0 0 30px rgba(212,175,55,0.15);
-
+            box-shadow:0 20px 60px rgba(0,0,0,0.7),0 0 30px rgba(212,175,55,0.15);
             animation:fadeUp 1.2s ease;
         }
 
@@ -188,39 +173,26 @@
 
         .tag{
             display:inline-block;
-
             padding:0.5rem 1rem;
-
             background:rgba(212,175,55,0.12);
-
             border:1px solid rgba(212,175,55,0.3);
-
             border-radius:999px;
-
             color:#d4af37;
-
             margin-bottom:1.5rem;
         }
 
         .hero-text h1{
             font-family:'Cinzel',serif;
-
             font-size:clamp(3rem,6vw,5rem);
-
             line-height:1.1;
-
             margin-bottom:1.5rem;
-
             color:#f5f5f5;
         }
 
         .hero-text p{
             color:#c8c8c8;
-
             line-height:1.8;
-
             font-size:1.1rem;
-
             margin-bottom:1.5rem;
         }
 
@@ -230,21 +202,15 @@
             display:flex;
             gap:1rem;
             flex-wrap:wrap;
-
             margin-top:2rem;
         }
 
         .stat-card{
             background:rgba(255,255,255,0.05);
-
             border:1px solid rgba(255,255,255,0.08);
-
             border-radius:18px;
-
             padding:1rem 1.4rem;
-
             min-width:130px;
-
             backdrop-filter:blur(10px);
         }
 
@@ -264,20 +230,14 @@
         .video-section{
             max-width:1200px;
             margin:auto;
-
             padding:2rem;
         }
 
         .video-container{
             overflow:hidden;
-
             border-radius:24px;
-
             border:1px solid rgba(255,255,255,0.08);
-
-            box-shadow:
-                0 20px 50px rgba(0,0,0,0.6),
-                0 0 20px rgba(212,175,55,0.1);
+            box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 20px rgba(212,175,55,0.1);
         }
 
         #player{
@@ -285,66 +245,28 @@
             height:700px;
         }
 
-        /* FOOTER */
-
         footer{
             text-align:center;
-
             padding:3rem 1rem;
-
             color:#888;
         }
 
-        /* ANIMAÇÃO */
-
         @keyframes fadeUp{
-
-            from{
-                opacity:0;
-                transform:translateY(30px);
-            }
-
-            to{
-                opacity:1;
-                transform:translateY(0);
-            }
+            from{opacity:0;transform:translateY(30px);}
+            to{opacity:1;transform:translateY(0);}
         }
 
-        /* RESPONSIVO */
-
         @media(max-width:1000px){
-
-            .hero-content{
-                grid-template-columns:1fr;
-            }
-
-            #player{
-                height:400px;
-            }
+            .hero-content{grid-template-columns:1fr;}
+            #player{height:400px;}
         }
 
         @media(max-width:768px){
-
-            nav ul{
-                gap:0.2rem;
-            }
-
-            .menu-item{
-                font-size:0.9rem;
-                padding:0.6rem;
-            }
-
-            .logo{
-                font-size:1.2rem;
-            }
-
-            #player{
-                height:250px;
-            }
-
-            .hero{
-                padding-top:10rem;
-            }
+            nav ul{gap:0.2rem;}
+            .menu-item{font-size:0.9rem;padding:0.6rem;}
+            .logo{font-size:1.2rem;}
+            #player{height:250px;}
+            .hero{padding-top:10rem;}
         }
 
     </style>
@@ -353,204 +275,209 @@
 
 <body>
 
-    <!-- NAVBAR -->
+<header>
 
-    <header>
+    <div class="navbar">
 
-        <div class="navbar">
+        <div class="logo">ELDEN RING</div>
 
-            <div class="logo">
-                ELDEN RING
-            </div>
+        <nav>
+            <ul>
 
-            <nav>
+                <li>
+                    <div class="menu-item">Armas</div>
+                    <div class="submenu">
+                        <a href="moonblade.html">Moonlight Greatsword</a>
+                        <a href="noite-chama.html">Espada da Noite e da Chama</a>
+                        <a href="enxertada.html">Lâmina Enxertada</a>
+                    </div>
+                </li>
 
-                <ul>
+                <li>
+                    <div class="menu-item">Classes</div>
+                    <div class="submenu">
+                        <a href="samurai.html">Samurai</a>
+                        <a href="astrologo.html">Astrólogo</a>
+                        <a href="ladrao.html">Ladrão</a>
+                    </div>
+                </li>
 
-                    <li>
+                <li>
+                    <div class="menu-item">Bosses</div>
+                    <div class="submenu">
+                        <a href="margit.html">Margit</a>
+                        <a href="radagon.html">Radagon</a>
+                        <a href="malenia.html">Malenia</a>
+                    </div>
+                </li>
 
-                        <div class="menu-item">Armas</div>
+            </ul>
+        </nav>
 
-                        <div class="submenu">
-                            <a href="moonblade.html">Moonlight Greatsword</a>
-                            <a href="noite-chama.html">Espada da Noite e da Chama</a>
-                            <a href="enxertada.html">Lâmina Enxertada</a>
-                        </div>
+    </div>
 
-                    </li>
+</header>
 
-                    <li>
+<!-- HERO -->
+<section class="hero">
 
-                        <div class="menu-item">Classes</div>
+    <div class="hero-content">
 
-                        <div class="submenu">
-                            <a href="samurai.html">Samurai</a>
-                            <a href="astrologo.html">Astrólogo</a>
-                            <a href="ladrao.html">Ladrão</a>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="menu-item">Bosses</div>
-
-                        <div class="submenu">
-                            <a href="margit.html">Margit</a>
-                            <a href="radagon.html">Radagon</a>
-                            <a href="malenia.html">Malenia</a>
-                        </div>
-
-                    </li>
-
-                </ul>
-
-            </nav>
-
+        <div class="hero-image">
+            <img src="imagens/samurai.webp" alt="Classe Samurai">
         </div>
 
-    </header>
+        <div class="hero-text">
 
-    <!-- HERO -->
+            <div class="tag">Classe Inicial</div>
 
-    <section class="hero">
+            <h1>SAMURAI</h1>
 
-        <div class="hero-content">
+            <p>
+O Samurai é um guerreiro ágil e preciso, especializado em combate à distância e ataques rápidos com katana.<br><br>
+Começa sua jornada com alto potencial de Destreza e excelente mobilidade, sendo ideal para jogadores que gostam de agressividade técnica e controle de combate.<br><br>
+Sua combinação de arco e katana permite adaptação tanto em lutas abertas quanto em duelos intensos.
+</p>
 
-            <div class="hero-image">
 
-                <img src="imagens/samurai.webp" alt="Classe Samurai">
-
-            </div>
-
-            <div class="hero-text">
-
-                <div class="tag">
-                    Classe Inicial
-                </div>
-
-                <h1>SAMURAI</h1>
-
-                <p>
-                    O Samurai é uma das classes mais versáteis de Elden Ring,
-                    combinando velocidade, precisão e resistência em combate.
-                </p>
-
-                <p>
-                    Equipado com uma katana mortal e um arco confiável,
-                    ele domina tanto confrontos corpo a corpo quanto ataques à distância,
-                    oferecendo um estilo elegante e extremamente letal.
-                </p>
-
-                <p>
-                    Sua alta destreza e mobilidade fazem do Samurai uma escolha perfeita
-                    para jogadores agressivos, técnicos e estratégicos.
-                </p>
-
-                <div class="stats">
-
-                    <div class="stat-card">
-                        <h3>Destreza</h3>
-                        <span>Alta</span>
-                    </div>
-
-                    <div class="stat-card">
-                        <h3>Mobilidade</h3>
-                        <span>Excelente</span>
-                    </div>
-
-                    <div class="stat-card">
-                        <h3>Dificuldade</h3>
-                        <span>Média</span>
-                    </div>
-
-                </div>
-
+            <div class="stats">
+                <div class="stat-card"><h3>Destreza</h3><span>Alta</span></div>
+                <div class="stat-card"><h3>Mobilidade</h3><span>Excelente</span></div>
+                <div class="stat-card"><h3>Dificuldade</h3><span>Média</span></div>
             </div>
 
         </div>
 
-    </section>
+    </div>
 
-    <!-- VIDEO -->
+</section>
 
-    <section class="video-section">
+<!-- VIDEO -->
+<section class="video-section">
+    <div class="video-container">
+        <div id="player"></div>
+    </div>
+</section>
 
-        <div class="video-container">
-            <div id="player"></div>
-        </div>
+<footer>© 2025 Elden Ring Wiki — Projeto feito por fã</footer>
 
-    </section>
+<script src="https://www.youtube.com/iframe_api"></script>
 
-    <!-- FOOTER -->
+<script>
+let player;
 
-    <footer>
-        © 2025 Elden Ring Wiki — Projeto feito por fã
-    </footer>
+// garante execução mesmo se API atrasar
+window.onYouTubeIframeAPIReady = function () {
+    createPlayer();
+};
 
-    <!-- YOUTUBE -->
-
-    <script>
-
-        var tag = document.createElement('script');
-
-        tag.src = "https://www.youtube.com/iframe_api";
-
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-
-        function onYouTubeIframeAPIReady() {
-
-            player = new YT.Player('player', {
-
-                videoId: 'WDTGhmunOVw',
-
-                playerVars: {
-                    autoplay: 1,
-                    controls: 0,
-                    mute: 1,
-                    modestbranding: 1,
-                    rel: 0,
-                    start: 13
-                },
-
-                events: {
-                    onReady: onPlayerReady,
-                    onStateChange: onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
-
-        function onPlayerStateChange(event) {
-
-            if (event.data == YT.PlayerState.PLAYING) {
-                checkTime();
+function createPlayer() {
+    player = new YT.Player('player', {
+        videoId: 'WDTGhmunOVw',
+        width: '100%',
+        height: '100%',
+        playerVars: {
+            autoplay: 1,
+            controls: 0,
+            mute: 1,
+            playsinline: 1,
+            modestbranding: 1,
+            rel: 0,
+            start: 13,
+            loop: 1,
+            playlist: 'WDTGhmunOVw'
+        },
+        events: {
+            onReady: (event) => {
+                // reforço anti-bloqueio
+                event.target.mute();
+                setTimeout(() => {
+                    event.target.playVideo();
+                }, 200);
             }
         }
+    });
+}
 
-        function checkTime() {
 
-            if (player) {
+/* MENU CLIQUE */
+const items = document.querySelectorAll("nav ul li");
 
-                var currentTime = player.getCurrentTime();
+items.forEach(item => {
+    item.querySelector(".menu-item").addEventListener("click", (e) => {
+        e.stopPropagation();
 
-                if (currentTime >= 20) {
-                    player.seekTo(13);
-                }
+        items.forEach(i => {
+            if (i !== item) i.classList.remove("active");
+        });
 
-                setTimeout(checkTime, 500);
-            }
-        }
+        item.classList.toggle("active");
+    });
+});
 
-    </script>
+document.addEventListener("click", () => {
+    items.forEach(i => i.classList.remove("active"));
+});
+</script>
+<!-- CINZAS FLUTUANDO (PARTÍCULAS) -->
+<style>
+#ash-container{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:2;
+}
+
+.ash{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:rgba(200,200,200,0.35);
+    border-radius:50%;
+    filter:blur(0.2px);
+    animation:ashFloat linear infinite;
+}
+
+@keyframes ashFloat{
+    0%{
+        transform:translateY(-10vh) translateX(0);
+        opacity:0;
+    }
+    10%{opacity:0.6;}
+    100%{
+        transform:translateY(110vh) translateX(20px);
+        opacity:0;
+    }
+}
+</style>
+
+<div id="ash-container"></div>
+
+<script>
+const ashContainer = document.getElementById('ash-container');
+
+function createAsh(){
+    const ash = document.createElement('div');
+    ash.classList.add('ash');
+
+    const size = Math.random() * 2 + 1;
+    ash.style.width = size + 'px';
+    ash.style.height = size + 'px';
+
+    ash.style.left = Math.random() * 100 + 'vw';
+    ash.style.top = -10 + 'vh';
+
+    ash.style.animationDuration = (8 + Math.random() * 12) + 's';
+
+    ashContainer.appendChild(ash);
+
+    setTimeout(() => ash.remove(), 20000);
+}
+
+setInterval(createAsh, 120);
+</script>
+
 
 </body>
-
 </html>
