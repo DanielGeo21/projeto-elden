@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guerreiro — Elden Ring Wiki</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .classes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  .class-card {
+    background: var(--bg-panel);
+    padding: 2rem;
+    transition: background 0.3s;
+  }
+
+  .class-card:hover {
+    background: rgba(201,168,76,0.04);
+  }
+
+  .class-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .class-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .class-archetype {
+    font-size: 0.7rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.3em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .class-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+  }
+
+  .class-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .stat-pill {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.6rem;
+    color: var(--text-dim);
+  }
+
+  .stat-pill.highlight {
+    border-color: var(--gold-dark);
+    color: var(--gold);
+  }
+
+  .class-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-dark);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .class-link:hover { color: var(--gold); }
+  .class-link::after { content: ' →'; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="topnav-logo" href="index.html">ELDEN RING</a>
+  <a class="topnav-back" href="index.html">Voltar ao Início</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1920&auto=format&fit=crop');"></div>
+  <p class="page-tag">Compêndio</p>
+  <h1 class="page-title">Classes</h1>
+  <p class="page-subtitle">Escolha seu arquétipo nas Terras Intermédias</p>
+</section>
+
+<div class="content-wrap">
+
+  <div class="divider"></div>
+
+  <div class="lore-block">
+    "Cada Maculado carrega em si uma história anterior à Grande Tempestade. A classe que escolhes não é apenas um estilo de combate — é uma memória de quem você foi antes de morrer."
+  </div>
+
+  <div class="classes-grid">
+
+    <div class="class-card">
+      <div class="class-icon">⚔️</div>
+      <div class="class-name">Guerreiro</div>
+      <div class="class-archetype">Arquétipo de Força e Agilidade</div>
+      <p class="class-desc">Equilibrado entre combate corpo a corpo e mobilidade. Domina espadas gêmeas e escudos médios, adaptando-se com facilidade a qualquer situação de batalha. Ideal para iniciantes e veteranos que buscam versatilidade.</p>
+      <div class="class-stats">
+        <span class="stat-pill highlight">Vigor 11</span>
+        <span class="stat-pill highlight">Força 10</span>
+        <span class="stat-pill highlight">Destreza 16</span>
+        <span class="stat-pill">Mente 11</span>
+        <span class="stat-pill">Resistência 11</span>
+      </div>
+      <a class="class-link" href="guerreiro.html">Ver detalhes</a>
+    </div>
+
+    <div class="class-card">
+      <div class="class-icon">🌙</div>
+      <div class="class-name">Astrólogo</div>
+      <div class="class-archetype">Arquétipo de Inteligência</div>
+      <p class="class-desc">Mestre das artes arcanas, inicia com os mais altos atributos de Mente e Inteligência do jogo. Fragil em combate direto, mas devastador à distância com feitiços de cristal e glintstone.</p>
+      <div class="class-stats">
+        <span class="stat-pill highlight">Mente 15</span>
+        <span class="stat-pill highlight">Inteligência 16</span>
+        <span class="stat-pill">Vigor 9</span>
+        <span class="stat-pill">Força 8</span>
+        <span class="stat-pill">Destreza 12</span>
+      </div>
+      <a class="class-link" href="astrologo.html">Ver detalhes</a>
+    </div>
+
+    <div class="class-card">
+      <div class="class-icon">🗡️</div>
+      <div class="class-name">Samurai</div>
+      <div class="class-archetype">Arquétipo de Destreza</div>
+      <p class="class-desc">Guerreiro de Oriente Distante com domínio de katana e arco longo. Combina ataques rápidos com sangramento (bleed) e perfuração. Uma das classes mais populares entre veteranos de souls games.</p>
+      <div class="class-stats">
+        <span class="stat-pill highlight">Vigor 12</span>
+        <span class="stat-pill highlight">Destreza 15</span>
+        <span class="stat-pill">Força 12</span>
+        <span class="stat-pill">Resistência 13</span>
+        <span class="stat-pill">Mente 11</span>
+      </div>
+      <a class="class-link" href="samurai.html">Ver detalhes</a>
+    </div>
+
+    <div class="class-card">
+      <div class="class-icon">🗝️</div>
+      <div class="class-name">Ladrão</div>
+      <div class="class-archetype">Arquétipo de Destreza e Agilidade</div>
+      <p class="class-desc">Especialista em furtividade, golpes críticos e movimentação ágil. Alta Destreza de partida, ideal para builds com adagas e veneno. O Ladrão recompensa paciência e precisão sobre força bruta.</p>
+      <div class="class-stats">
+        <span class="stat-pill highlight">Destreza 14</span>
+        <span class="stat-pill highlight">Vigor 10</span>
+        <span class="stat-pill">Força 9</span>
+        <span class="stat-pill">Mente 11</span>
+        <span class="stat-pill">Arcano 14</span>
+      </div>
+      <a class="class-link" href="ladrao.html">Ver detalhes</a>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="section-heading">Qual Classe Escolher?</h2>
+  <p class="prose">
+    Se é sua primeira jornada nas Terras Intermédias, o <strong>Guerreiro</strong> ou o <strong>Samurai</strong> oferecem a curva de aprendizado mais suave. Jogadores experientes que buscam uma experiência radicalmente diferente devem experimentar o <strong>Astrólogo</strong> — uma das classes com maior teto de dano no jogo.
+  </p>
+
+  <div class="divider"></div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">ELDEN RING</div>
+  <p>Wiki não-oficial — Projeto de portfólio · FromSoftware & Bandai Namco</p>
+</footer>
+
+</body>
+</html>

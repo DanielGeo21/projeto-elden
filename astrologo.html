@@ -1,281 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elden Ring - Classe Astrólogo</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="imagens/elden.webp" type="image/webp" />
-
-  <style>
-    body, html {
-      margin: 0; padding: 0; height: 100%;
-      background-color: #121212;
-      color: #eee;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    a {
-      color: #D4AF37;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    header {
-      background-color: #1f1f1f;
-      padding: 1rem 0;
-      text-align: center;
-      border-bottom: 2px solid #333;
-    }
-    header h1 {
-      margin: 0;
-      font-weight: 700;
-      font-size: 2.5rem;
-      letter-spacing: 1px;
-      color: #D4AF37;
-    }
-
-    nav {
-      background-color: #222;
-      padding: 0.5rem 0;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-    nav ul li {
-      cursor: pointer;
-      position: relative;
-    }
-    nav ul li .menu-item {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      background-color: #2a2a2a;
-      transition: background-color 0.3s;
-    }
-    nav ul li .menu-item:hover {
-      background-color: #D4AF37;
-      color: #121212;
-    }
-
-    .submenu {
-      display: none;
-      position: absolute;
-      background-color: #2a2a2a;
-      border: 1px solid #444;
-      margin-top: 0.3rem;
-      border-radius: 4px;
-      min-width: 200px;
-      z-index: 100;
-    }
-    nav ul li:hover .submenu {
-      display: block;
-    }
-    .submenu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #eee;
-      border-bottom: 1px solid #444;
-    }
-    .submenu a:last-child {
-      border-bottom: none;
-    }
-    .submenu a:hover {
-      background-color: #D4AF37;
-      color: #121212;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 2rem auto 4rem auto;
-      padding: 0 1rem;
-    }
-
-    .classe-section {
-      text-align: center;
-    }
-    .classe-section img {
-      width: 500px;
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 0 15px #D4AF37aa;
-    }
-
-    #player {
-      margin: 2rem auto;
-      width: 500px;
-      max-width: 100%;
-      height: 281px; /* proporção 16:9 */
-      border-radius: 8px;
-      box-shadow: 0 0 15px #D4AF37aa;
-      overflow: hidden;
-      background-color: black;
-    }
-
-    .classe-text {
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #ccc;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    footer {
-      background-color: #1f1f1f;
-      text-align: center;
-      padding: 1rem 0;
-      color: #777;
-      border-top: 1px solid #333;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        gap: 0;
-      }
-      nav ul li {
-        margin-bottom: 0.3rem;
-      }
-      #player {
-        width: 100%;
-        height: calc(100vw * 9 / 16);
-      }
-      .classe-section img {
-        width: 100%;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrólogo — Elden Ring Wiki</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>ELDEN RING - GUIA DEFINITIVO</h1>
-  </header>
+<nav class="topnav">
+  <a class="topnav-logo" href="index.html">ELDEN RING</a>
+  <a class="topnav-back" href="guerreiro.html">← Classes</a>
+</nav>
 
-  <nav>
-    <ul>
-      <li>
-        <div class="menu-item">Armas Lendárias</div>
-        <div class="submenu">
-          <a href="moonblade.html">Moonlight Greatsword</a>
-          <a href="noite-chama.html">Espada da Noite e da Chama</a>
-          <a href="enxertada.html">Espada Grande com Lâmina Enxertada</a>
-        </div>
-      </li>
-      <li>
-        <div class="menu-item">Classes</div>
-        <div class="submenu">
-          <a href="samurai.html">Samurai</a>
-          <a href="astrologo.html">Astrólogo</a>
-          <a href="ladrao.html">Ladrão</a>
-        </div>
-      </li>
-      <li>
-        <div class="menu-item">Bosses</div>
-        <div class="submenu">
-          <a href="margit.html">Margit</a>
-          <a href="radagon.html">Radagon</a>
-          <a href="malenia.html">Malenia</a>
-          <a href="maliketh.html">Maliketh</a>
-        </div>
-      </li>
-      <li>
-        <div class="menu-item">Táticas</div>
-        <div class="submenu">
-          <a href="pvp.html">PvP</a>
-          <a href="pve.html">PvE</a>
-        </div>
-      </li>
-    </ul>
-  </nav>
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1920&auto=format&fit=crop');"></div>
+  <p class="page-tag">Classes</p>
+  <h1 class="page-title">Astrólogo</h1>
+  <p class="page-subtitle">Mestre das Artes Arcanas</p>
+</section>
 
-  <main>
-    <section class="classe-section">
-      <h2>Classe: Astrólogo</h2>
-      <img src="imagens/astrologo.webp" alt="Imagem da Classe Astrólogo" />
+<div class="content-wrap">
+  <div class="divider"></div>
+  <span class="badge">CLASSE · MAGO DE INTELIGÊNCIA</span>
 
-      <div id="player"></div>
+  <div class="lore-block">
+    "Estudiosos das estrelas e dos padrões ocultos no cosmos. O Astrólogo aprende a dobrar a realidade em fragmentos de luz cristalina — armas que atravessam armaduras como agulhas através de névoa."
+  </div>
 
-      <article class="classe-text">
-        <p>
-          O Astrólogo é a classe ideal para jogadores que desejam se especializar em magia desde o início. Com alta inteligência e mente, ele domina feitiços e magias que causam grande dano à distância.
-        </p>
-        <p>
-          Armado com um cajado mágico e vestimentas leves, o Astrólogo é frágil em combate físico, mas extremamente poderoso ao manter distância dos inimigos. Seu estilo de jogo favorece posicionamento e controle do campo de batalha.
-        </p>
-        <p>
-          Jogadores que preferem eliminar ameaças antes mesmo de serem tocados encontrarão no Astrólogo uma escolha perfeita para uma jornada mágica em Elden Ring.
-        </p>
-      </article>
-    </section>
-  </main>
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-label">Vigor</div><div class="stat-value">9</div></div>
+    <div class="stat-box"><div class="stat-label">Mente</div><div class="stat-value">15</div></div>
+    <div class="stat-box"><div class="stat-label">Resistência</div><div class="stat-value">9</div></div>
+    <div class="stat-box"><div class="stat-label">Força</div><div class="stat-value">8</div></div>
+    <div class="stat-box"><div class="stat-label">Destreza</div><div class="stat-value">12</div></div>
+    <div class="stat-box"><div class="stat-label">Inteligência</div><div class="stat-value">16</div></div>
+  </div>
 
-  <footer>
-    &copy; 2025 Elden Ring Fan Page - Todos os direitos reservados
-  </footer>
+  <div class="divider"></div>
 
-  <script>
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  <h2 class="section-heading">Estilo de Jogo</h2>
+  <p class="prose">O Astrólogo é a <strong>classe mais frágil</strong> no combate direto, mas compensa com feitiços de alcance e dano em área absurdos. Feitiços como <strong>Estrelas de Ruin</strong> e <strong>Chuva de Meteoros</strong> são capazes de destruir bosses em segundos nas mãos de um mago experiente.</p>
 
-    var player;
+  <h2 class="section-heading">Equipamentos Iniciais</h2>
+  <p class="prose">Começa com a <strong>Varinha de Glintstone</strong> (catalisador), o <strong>Escudo de Pele</strong> e os feitiços <em>Pebble de Glintstone</em> e <em>Arco de Glintstone</em>. Simples, mas eficazes para os primeiros passos em Limgrave.</p>
 
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '281',
-        width: '500',
-        videoId: 'BxOaEKMfO-8',
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          mute: 1,
-          modestbranding: 1,
-          rel: 0,
-          start: 16,
-        },
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange
-        }
-      });
-    }
+  <div class="tip-box">Astrólogos sofrem muito nas primeiras horas por terem pouquíssimo Vigor. Invista pelo menos uns 25-30 pontos em Vigor antes de maximizar Inteligência.</div>
 
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
+  <div class="divider"></div>
+</div>
 
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING) {
-        checkTime();
-      }
-    }
-
-    function checkTime() {
-      if (player) {
-        var currentTime = player.getCurrentTime();
-        if (currentTime >= 40) {
-          player.seekTo(16);
-        }
-        setTimeout(checkTime, 500);
-      }
-    }
-  </script>
-
+<footer>
+  <div class="footer-logo">ELDEN RING</div>
+  <p>Wiki não-oficial — Projeto de portfólio · FromSoftware & Bandai Namco</p>
+</footer>
 </body>
 </html>

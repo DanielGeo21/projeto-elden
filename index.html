@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elden Ring — Guia Definitivo</title>
+<link rel="icon" href="imagens/elden.webp" type="image/webp">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dark: #8a6a1f;
+    --bg-dark: #080806;
+    --bg-panel: rgba(12,10,6,0.85);
+    --border: rgba(201,168,76,0.25);
+    --text: #c8bfae;
+    --text-dim: #7a7062;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', serif;
+    background-color: var(--bg-dark);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* === NOISE OVERLAY === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* === HERO === */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(100,40,0,0.15) 0%, transparent 60%),
+      url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+    filter: brightness(0.25) saturate(0.6);
+    z-index: -1;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, var(--bg-dark) 100%);
+  }
+
+  .hero-emblem {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeDown 1s ease 0.3s forwards;
+  }
+
+  .hero-emblem svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-shadow:
+      0 0 40px rgba(201,168,76,0.4),
+      0 0 80px rgba(201,168,76,0.15),
+      0 2px 0 rgba(0,0,0,0.8);
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.5s forwards;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    letter-spacing: 0.5em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 0.6rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.7s forwards;
+  }
+
+  .divider {
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 2rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease 0.9s forwards;
+  }
+
+  .hero-desc {
+    max-width: 600px;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.9;
+    color: var(--text);
+    font-style: italic;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 1s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0;
+    animation: fadeIn 2s ease 2s forwards;
+  }
+
+  .scroll-hint span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold-dark), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* === NAV SECTION === */
+  .nav-section {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+  }
+
+  .section-divider {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 3.5rem;
+  }
+
+  /* === GRID === */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .card {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.6);
+    box-shadow: 0 0 40px rgba(201,168,76,0.1), inset 0 0 40px rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+
+  .card-header {
+    padding: 2rem 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card-icon {
+    font-size: 1.8rem;
+    width: 50px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .card-title-wrap { flex: 1; }
+
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+  }
+
+  .card-count {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+  }
+
+  .card-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 1.5px solid var(--gold-dark);
+    border-bottom: 1.5px solid var(--gold-dark);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease, border-color 0.3s;
+    flex-shrink: 0;
+    margin-right: 0.3rem;
+  }
+
+  .card.open .card-arrow {
+    transform: rotate(-135deg);
+    border-color: var(--gold);
+  }
+
+  .card-top-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-top-line,
+  .card.open .card-top-line { transform: scaleX(1); }
+
+  /* === SUBMENU === */
+  .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 1px solid transparent;
+  }
+
+  .submenu.open {
+    max-height: 500px;
+    border-top-color: var(--border);
+  }
+
+  .submenu a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    color: var(--text);
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .submenu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+
+  .submenu a:hover::before { transform: scaleY(1); }
+
+  .submenu a:hover {
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.06);
+    padding-left: 2.6rem;
+  }
+
+  .submenu a .link-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--gold-dark);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+
+  .submenu a:hover .link-dot { background: var(--gold); }
+
+  /* === LORE SECTION === */
+  .lore-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lore-quote {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    line-height: 2;
+    color: var(--text-dim);
+    font-style: italic;
+    position: relative;
+    padding: 2rem 3rem;
+  }
+
+  .lore-quote::before,
+  .lore-quote::after {
+    content: '"';
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 5rem;
+    color: var(--gold-dark);
+    opacity: 0.4;
+    position: absolute;
+    line-height: 1;
+  }
+
+  .lore-quote::before { top: 0; left: 0; }
+  .lore-quote::after { content: '"'; bottom: -1.5rem; right: 0; }
+
+  /* === FOOTER === */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.8rem;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* === ANIMATIONS === */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .hero-title { letter-spacing: 0.06em; }
+    .lore-quote { padding: 2rem 1rem; }
+    .lore-quote::before, .lore-quote::after { font-size: 3rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .card-header { padding: 1.5rem; }
+    .submenu a { padding: 0.9rem 1.5rem; }
+    .submenu a:hover { padding-left: 2rem; }
+    .nav-section { padding: 3rem 1rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-emblem">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="45" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+      <circle cx="50" cy="50" r="38" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+      <path d="M50 10 L55 40 L85 40 L62 58 L72 88 L50 70 L28 88 L38 58 L15 40 L45 40 Z" fill="none" stroke="#c9a84c" stroke-width="1.2" opacity="0.7"/>
+      <circle cx="50" cy="50" r="5" fill="#c9a84c" opacity="0.8"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-title">ELDEN RING</h1>
+  <p class="hero-subtitle">Guia Definitivo — Terras Intermédias</p>
+  <div class="divider"></div>
+  <p class="hero-desc">
+    Explore armas lendárias, domine classes ancestrais,<br>
+    derrote bosses implacáveis e descubra os segredos<br>
+    ocultos nas Terras Intermédias.
+  </p>
+
+  <div class="scroll-hint">
+    <span>EXPLORAR</span>
+  </div>
+</section>
+
+<!-- NAVIGATION CARDS -->
+<section class="nav-section">
+  <p class="section-label">Compêndio das Terras Intermédias</p>
+  <h2 class="section-title">Escolha seu Caminho</h2>
+  <div class="section-divider"></div>
+
+  <div class="cards-grid">
+
+    <!-- ARMAS -->
+    <div class="card" id="card-armas">
+      <div class="card-top-line"></div>
+      <div class="card-header" onclick="toggleCard('card-armas')">
+        <span class="card-icon">⚔️</span>
+        <div class="card-title-wrap">
+          <div class="card-title">Armas Lendárias</div>
+          <div class="card-count">3 relíquias catalogadas</div>
+        </div>
+        <div class="card-arrow"></div>
+      </div>
+      <div class="submenu" id="sub-armas">
+        <a href="moonblade.html"><span class="link-dot"></span>Moonlight Greatsword</a>
+        <a href="noite-chama.html"><span class="link-dot"></span>Espada da Noite e da Chama</a>
+        <a href="enxertada.html"><span class="link-dot"></span>Lâmina Enxertada</a>
+      </div>
+    </div>
+
+    <!-- CLASSES -->
+    <div class="card" id="card-classes">
+      <div class="card-top-line"></div>
+      <div class="card-header" onclick="toggleCard('card-classes')">
+        <span class="card-icon">🛡️</span>
+        <div class="card-title-wrap">
+          <div class="card-title">Classes</div>
+          <div class="card-count">4 arquétipos disponíveis</div>
+        </div>
+        <div class="card-arrow"></div>
+      </div>
+      <div class="submenu" id="sub-classes">
+        <a href="guerreiro.html"><span class="link-dot"></span>Guerreiro</a>
+        <a href="astrologo.html"><span class="link-dot"></span>Astrólogo</a>
+        <a href="samurai.html"><span class="link-dot"></span>Samurai</a>
+        <a href="ladrao.html"><span class="link-dot"></span>Ladrão</a>
+      </div>
+    </div>
+
+    <!-- BOSSES -->
+    <div class="card" id="card-bosses">
+      <div class="card-top-line"></div>
+      <div class="card-header" onclick="toggleCard('card-bosses')">
+        <span class="card-icon">💀</span>
+        <div class="card-title-wrap">
+          <div class="card-title">Bosses</div>
+          <div class="card-count">3 adversários implacáveis</div>
+        </div>
+        <div class="card-arrow"></div>
+      </div>
+      <div class="submenu" id="sub-bosses">
+        <a href="maliketh.html"><span class="link-dot"></span>Maliketh, a Lâmina Negra</a>
+        <a href="radahn.html"><span class="link-dot"></span>Starscourge Radahn</a>
+        <a href="margit.html"><span class="link-dot"></span>Margit, o Presságio Sinistro</a>
+      </div>
+    </div>
+
+    <!-- LOCAIS -->
+    <div class="card" id="card-locais">
+      <div class="card-top-line"></div>
+      <div class="card-header" onclick="toggleCard('card-locais')">
+        <span class="card-icon">🗺️</span>
+        <div class="card-title-wrap">
+          <div class="card-title">Locais Importantes</div>
+          <div class="card-count">3 regiões exploradas</div>
+        </div>
+        <div class="card-arrow"></div>
+      </div>
+      <div class="submenu" id="sub-locais">
+        <a href="caelid.html"><span class="link-dot"></span>Caelid</a>
+        <a href="nokron.html"><span class="link-dot"></span>Nokron, Cidade Eterna</a>
+        <a href="liurnia.html"><span class="link-dot"></span>Liurnia dos Lagos</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LORE QUOTE -->
+<section class="lore-section">
+  <div class="divider"></div>
+  <p class="lore-quote">
+    Que a graça dourada guie teu caminho, Maculado.<br>
+    As Terras Intermédias aguardam aquele que ousará enfrentar seus segredos mais sombrios.
+  </p>
+  <div class="divider" style="margin-top:3rem;"></div>
+</section>
+
+<footer>
+  <div class="footer-logo">ELDEN RING</div>
+  <p>Wiki não-oficial — Projeto de portfólio desenvolvido por fã ·  FromSoftware & Bandai Namco</p>
+</footer>
+
+<script>
+  function toggleCard(cardId) {
+    const card = document.getElementById(cardId);
+    const subId = 'sub-' + cardId.replace('card-', '');
+    const sub = document.getElementById(subId);
+    const isOpen = card.classList.contains('open');
+
+    // Fecha todos
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.submenu').forEach(s => s.classList.remove('open'));
+
+    if (!isOpen) {
+      card.classList.add('open');
+      sub.classList.add('open');
+    }
+  }
+
+  // Scroll reveal leve
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s, border-color 0.4s ease, box-shadow 0.4s ease`;
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
